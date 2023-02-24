@@ -4,16 +4,16 @@ const result = document.getElementById("result");
 const btn = document.getElementById("search-btn");
 
 btn.addEventListener("click", () => {
-  const inputWord = document.getElementById("inp-word").value;
+  const inpWord = document.getElementById("inp-word").value;
 
-  fetch(`${url} ${inputWord}`)
+  fetch(`${url} ${inpWord}`)
     .then((resp) => resp.json())
 
     .then((data) => {
       console.log(data);
 
       result.innerHTML = `<div class="word">
-        <h3>${inputWord}</h3>
+        <h3>${inpWord}</h3>
         <button onClick ="playSound()">
             <i class="fa-solid fa-volume-high"></i>
         </button>
@@ -28,7 +28,7 @@ btn.addEventListener("click", () => {
       sound.setAttribute("src", `${data[0].phonetics[1].audio}`);
     })
     .catch(() => {
-      result.innerHTML = `<h2>Could not find the word </h2>`;
+      result.innerHTML = `<h3>Could not find the word </h3>`;
     });
 });
 function playSound() {
